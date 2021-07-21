@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Title:</strong>
   <%= @post.title %>
@@ -11,14 +9,14 @@
 </p>
 
 <p>
-  <strong>No of likes:</strong>
-  <%= @post.no_of_likes %>
-</p>
-
-<p>
   <strong>User:</strong>
-  <%= @post.user_id %>
+  <%= @post.user.name %>
 </p>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
+
+<% if user_signed_in? && current_user.id == @post.user_id %>
+  | <%= link_to 'Edit', edit_post_path(@post) %> |
+  <%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+

@@ -1,0 +1,30 @@
+<div class="feed-container">
+  <h2 class="feed-title">Feed</h2>
+  <div class="posts-container">
+    <% @posts.each do |post| %>
+      <div class="post-container">
+        <div class="post">
+          <h3 class="post-title"><%= post.title %></h2>
+          <div class="post-body">
+            <p><%= post.body %></p>
+          </div>
+        </div>
+
+        <div class="post-info">
+            <div class="post-user">
+              <p class="post-user-name">
+                <% if user_signed_in? %>
+                  <%= post.user.name %> 
+                <% else %>
+                  Anonymous
+                <% end %>
+              </p>
+            </div>
+          <div class="post-action">
+            <%= link_to 'View', post %></td>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
